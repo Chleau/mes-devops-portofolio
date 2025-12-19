@@ -19,7 +19,7 @@ export default function Footer() {
           >
             <h3 className="font-display text-lg font-bold text-dark-spruce mb-3">Chloé</h3>
             <p className="text-grey-olive text-sm leading-relaxed">
-              Développeuse Full-stack passionnée par la création d'expériences web modernes et élégantes.
+              Développeuse 
             </p>
           </motion.div>
 
