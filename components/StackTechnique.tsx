@@ -63,7 +63,7 @@ export default function StackTechnique() {
             Ma Stack Technique
           </h2>
           <p className="text-lg text-grey-olive max-w-2xl mx-auto">
-            Les technologies et outils que j'utilise pour créer des applications web modernes et performantes.
+            Les technologies et outils que j&apos;utilise pour créer des applications web modernes et performantes.
           </p>
         </motion.div>
 
@@ -101,7 +101,7 @@ export default function StackTechnique() {
           className="mt-20 glass p-10 rounded-2xl text-center"
         >
           <p className="text-grey-olive text-lg mb-6 leading-relaxed">
-            Je suis spécialisée dans la création d'expériences web <span className="font-bold text-dark-spruce">modernes et fluides</span> avec une attention particulière à l'<span className="font-bold text-dark-spruce">accessibilité</span> et la <span className="font-bold text-dark-spruce">performance</span>.
+            Je suis spécialisée dans la création d&apos;expériences web <span className="font-bold text-dark-spruce">modernes et fluides</span> avec une attention particulière à l&apos;<span className="font-bold text-dark-spruce">accessibilité</span> et la <span className="font-bold text-dark-spruce">performance</span>.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             {['Frontend', 'Backend', 'Databases', 'DevOps'].map((badge, idx) => (
@@ -115,7 +115,6 @@ export default function StackTechnique() {
             ))}
           </div>
         </motion.div>
-      </motion.div>
     </section>
   );
 }
