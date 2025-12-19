@@ -78,7 +78,7 @@ export default function HeroSection() {
           variants={itemVariants}
           className="text-lg md:text-xl text-grey-olive mb-12 max-w-2xl mx-auto leading-relaxed"
         >
-          3 ans d'expérience en alternance chez <span className="font-semibold text-dark-spruce">Worldline</span> et{' '}
+          56 ans d'expérience en alternance chez <span className="font-semibold text-dark-spruce">Worldline</span> et{' '}
           <span className="font-semibold text-dark-spruce">NewDeal</span>. Je crée des expériences web modernes, élégantes et fluides.
         </motion.p>
 
