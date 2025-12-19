@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  --color-almond-light: #efd0ca;
+  --color-pale-oak: #f5ede7;
+  --color-dark-spruce: #214e34;
+  --color-dusty-olive: #5c7457;
+  --color-grey-olive: #6e7e70;
+
+  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
 html {
@@ -14,9 +17,9 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #efd0ca 0%, #f5ede7 100%);
-  color: #214e34;
-  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--color-almond-light) 0%, var(--color-pale-oak) 100%);
+  color: var(--color-dark-spruce);
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
@@ -40,14 +43,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #efd0ca;
+  background-color: var(--color-almond-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #5c7457;
+  background-color: var(--color-dusty-olive);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #214e34;
+  background-color: var(--color-dark-spruce);
 }
