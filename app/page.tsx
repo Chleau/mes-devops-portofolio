@@ -5,10 +5,12 @@ import StackTechnique from '@/components/StackTechnique';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import FloatingParticles from '@/components/FloatingParticles';
+import FairyDustCursor from '@/components/FairyDustCursor';
 
 export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
+      <FairyDustCursor />
       <FloatingParticles />
       <Header />
       

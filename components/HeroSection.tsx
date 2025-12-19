@@ -68,8 +68,24 @@ export default function HeroSection() {
         >
           Développeuse Full-stack
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-dusty-olive via-dark-spruce to-dusty-olive">
-            avec un peu de magie ✨
+          <span className="relative inline-block">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-dusty-olive via-dark-spruce to-dusty-olive animate-gradient-x bg-[length:200%_auto]">
+              avec un peu de magie ✨
+            </span>
+            <motion.span 
+              className="absolute -top-4 -right-6 text-2xl"
+              animate={{ 
+                rotate: [0, 15, -15, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity,
+                repeatType: "reverse" 
+              }}
+            >
+              🧚‍♀️
+            </motion.span>
           </span>
         </motion.h1>
 
