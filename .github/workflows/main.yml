@@ -64,7 +64,7 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: ${{ secrets.DEPLOY_PORT }}
           script: |
-            cd /hom/${{ secrets.DEPLOY_USER }}/apps/portfolio
+            cd /home/${{ secrets.DEPLOY_USER }}/apps/portfolio
             docker-compose pull
             docker-compose down
             docker-compose up -d
