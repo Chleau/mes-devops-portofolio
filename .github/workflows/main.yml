@@ -48,5 +48,5 @@ jobs:
 
       - name: Push Docker image to GitHub Container Registry
         run: |
-          docker tag portfolio ghcr.io/${{ env.REPO_SLUG }}:latest
+          docker tag chloe-portfolio ghcr.io/${{ env.REPO_SLUG }}:latest
           docker push ghcr.io/${{ env.REPO_SLUG }}:latest
