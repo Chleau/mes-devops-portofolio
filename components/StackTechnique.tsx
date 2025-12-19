@@ -44,11 +44,48 @@ export default function StackTechnique() {
     { name: 'MySQL', Icon: SiMysql, color: 'from-pale-oak to-dusty-olive' },
   ];
 
+  // Générer des positions aléatoires pour les particules magiques
+  const magicParticles = Array.from({ length: 15 }).map((_, i) => ({
+    id: i,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    size: Math.random() * 4 + 1,
+    duration: Math.random() * 3 + 2,
+    delay: Math.random() * 2,
+  }));
+
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
       {/* Decorative background */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-dusty-olive/10 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-pale-oak/20 rounded-full blur-3xl -z-10"></div>
+
+      {/* Magic Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {magicParticles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full bg-dusty-olive/30 blur-[1px]"
+            style={{
+              top: particle.top,
+              left: particle.left,
+              width: particle.size,
+              height: particle.size,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0, 0.8, 0],
+              scale: [0, 1.5, 0],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <motion.div
@@ -79,14 +116,33 @@ export default function StackTechnique() {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    whileHover={{ y: -5, scale: 1.02 }}
+                    animate={{ 
+                      y: [0, -8, 0],
+                    }}
+                    transition={{
+                      y: {
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.2, // Staggered floating
+                      }
+                    }}
+                    whileHover={{ 
+                      y: -12, 
+                      scale: 1.05,
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                      transition: { duration: 0.2 }
+                    }}
                     whileTap={{ scale: 0.98 }}
-                    className="group glass p-6 rounded-2xl flex flex-col items-center gap-4 cursor-pointer hover:shadow-xl transition-all border border-white/40"
+                    className="group glass p-6 rounded-2xl flex flex-col items-center gap-4 cursor-pointer hover:shadow-xl transition-all border border-white/40 relative overflow-hidden"
                   >
-                    <div className={`w-14 h-14 bg-gradient-to-br ${tech.color} rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                    {/* Shine effect on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out z-10 pointer-events-none" />
+                    
+                    <div className={`w-14 h-14 bg-gradient-to-br ${tech.color} rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 relative z-20`}>
                       <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <p className="font-bold text-dark-spruce text-center text-sm">
+                    <p className="font-bold text-dark-spruce text-center text-sm relative z-20">
                       {tech.name}
                     </p>
                   </motion.div>
