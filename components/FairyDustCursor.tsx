@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Sparkle {
@@ -10,23 +10,23 @@ interface Sparkle {
   color: string;
 }
 
+const COLORS = ['#5c7457', '#efd0ca', '#f5ede7', '#FFD700']; // Dusty olive, almond, pale oak, gold
+
 export default function FairyDustCursor() {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const counterRef = useRef(0);
+
+  const removeSparkle = useCallback((sparkleId: number) => {
+    setSparkles((prev) => prev.filter((s) => s.id !== sparkleId));
+  }, []);
 
   useEffect(() => {
-    let counter = 0;
-    const colors = ['#5c7457', '#efd0ca', '#f5ede7', '#FFD700']; // Dusty olive, almond, pale oak, gold
-
-    const removeSparkle = (sparkleId: number) => {
-      setSparkles((prev) => prev.filter((s) => s.id !== sparkleId));
-    };
-
     const createSparkle = (e: MouseEvent) => {
       const newSparkle = { 
-        id: counter++, 
+        id: counterRef.current++, 
         x: e.clientX, 
         y: e.clientY,
-        color: colors[Math.floor(Math.random() * colors.length)]
+        color: COLORS[Math.floor(Math.random() * COLORS.length)]
       };
       
       setSparkles((prev) => [...prev, newSparkle]);
@@ -43,7 +43,7 @@ export default function FairyDustCursor() {
 
     globalThis.addEventListener('mousemove', handleMouseMove);
     return () => globalThis.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [removeSparkle]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
