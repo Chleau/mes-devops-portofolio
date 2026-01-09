@@ -44,6 +44,9 @@ jobs:
       - name: Install depenciencies
         run: npm install
 
+      - name: Run Tests
+        run: npm test
+
       - name: Build NextJS project
         run: npm run build
 
