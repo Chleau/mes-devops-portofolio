@@ -17,6 +17,7 @@ const config: Config = {
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],
+  coverageReporters: ['text', 'lcov'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
