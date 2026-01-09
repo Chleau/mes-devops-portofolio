@@ -17,10 +17,11 @@ export default function FairyDustCursor() {
     let counter = 0;
     const colors = ['#5c7457', '#efd0ca', '#f5ede7', '#FFD700']; // Dusty olive, almond, pale oak, gold
 
-    const handleMouseMove = (e: MouseEvent) => {
-      // Add a sparkle every few pixels or on every move
-      if (Math.random() > 0.5) return; // Don't add on every single event to avoid too many nodes
+    const removeSparkle = (sparkleId: number) => {
+      setSparkles((prev) => prev.filter((s) => s.id !== sparkleId));
+    };
 
+    const createSparkle = (e: MouseEvent) => {
       const newSparkle = { 
         id: counter++, 
         x: e.clientX, 
@@ -29,15 +30,19 @@ export default function FairyDustCursor() {
       };
       
       setSparkles((prev) => [...prev, newSparkle]);
-
+      
       // Remove sparkle after a short delay
-      setTimeout(() => {
-        setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
-      }, 1000);
+      setTimeout(() => removeSparkle(newSparkle.id), 1000);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: MouseEvent) => {
+      // Add a sparkle every few pixels or on every move
+      if (Math.random() > 0.5) return; // Don't add on every single event to avoid too many nodes
+      createSparkle(e);
+    };
+
+    globalThis.addEventListener('mousemove', handleMouseMove);
+    return () => globalThis.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
