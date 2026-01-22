@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* config options here */
+  experimental: {
+    instrumentationHook: true,
+  },
+  env: {
+    NEXT_PUBLIC_APP_VERSION: process.env.npm_package_version || '1.0.0',
+    NEXT_PUBLIC_APP_ENV: process.env.NODE_ENV || 'development',
+  },
   // Output standalone pour Docker
   output: "standalone",
 

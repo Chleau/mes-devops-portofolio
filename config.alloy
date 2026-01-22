@@ -1,0 +1,38 @@
+logging {
+  level = "info"
+}
+
+otelcol.receiver.otlp "default" {
+  http {
+    endpoint = "0.0.0.0:4318"
+  }
+  grpc {
+    endpoint = "0.0.0.0:4317"
+  }
+
+  output {
+    metrics = [otelcol.processor.batch.default.input]
+    logs    = [otelcol.processor.batch.default.input]
+    traces  = [otelcol.processor.batch.default.input]
+  }
+}
+
+otelcol.processor.batch "default" {
+  output {
+    metrics = [otelcol.exporter.otlp.grafana_cloud.input]
+    logs    = [otelcol.exporter.otlp.grafana_cloud.input]
+    traces  = [otelcol.exporter.otlp.grafana_cloud.input]
+  }
+}
+
+otelcol.exporter.otlp "grafana_cloud" {
+  client {
+    endpoint = env("GRAFANA_CLOUD_OTLP_ENDPOINT")
+    auth     = otelcol.auth.basic.grafana_cloud.handler
+  }
+}
+
+otelcol.auth.basic "grafana_cloud" {
+  username = env("GRAFANA_CLOUD_USER_ID")
+  password = env("GRAFANA_CLOUD_API_TOKEN")
+}

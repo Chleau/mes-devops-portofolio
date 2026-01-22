@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import FaroInitializer from "@/components/FaroInitializer";
 
 export const metadata: Metadata = {
   title: "Chloé | Développeuse Full-stack",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#214E34" />
       </head>
       <body className="antialiased">
+        <FaroInitializer />
         {children}
       </body>
     </html>
